@@ -152,56 +152,22 @@ wrangler pages deploy dist
 
 ### Streamlit Cloud Deployment
 
-To deploy this application on Streamlit Cloud, you'll need to create a Streamlit wrapper:
+This project is configured for easy deployment to Streamlit Cloud. The `streamlit_app.py` script will automatically build the React frontend and serve it.
 
-#### Step 1: Create Streamlit App
+#### Prerequisites
+- A GitHub repository with your project code.
+- A Streamlit Cloud account.
 
-Create a `streamlit_app.py` file in the root directory:
+#### Deployment Steps
 
-```python
-import streamlit as st
-import streamlit.components.v1 as components
-import os
-
-# Set page config
-st.set_page_config(
-    page_title="Real Estate Arbitrage Platform",
-    page_icon="🏠",
-    layout="wide"
-)
-
-# Embed the React app
-st.title("Real Estate Arbitrage Platform")
-st.markdown("---")
-
-# Serve the built React app
-if os.path.exists("dist/index.html"):
-    with open("dist/index.html", "r", encoding="utf-8") as f:
-        html_content = f.read()
-    components.html(html_content, height=800, scrolling=True)
-else:
-    st.error("Please build the React app first using 'npm run build'")
-    st.code("npm run build", language="bash")
-```
-
-#### Step 2: Add Requirements
-
-Create a `requirements.txt` file:
-
-```txt
-streamlit>=1.28.0
-```
-
-#### Step 3: Deploy to Streamlit Cloud
-
-1. **Push to GitHub:** Ensure your code is pushed to a GitHub repository
-2. **Visit Streamlit Cloud:** Go to [share.streamlit.io](https://share.streamlit.io)
-3. **Connect Repository:** Click "New app" and connect your GitHub repository
+1. **Push to GitHub:** Ensure your latest code is pushed to your GitHub repository.
+2. **Visit Streamlit Cloud:** Go to [share.streamlit.io](https://share.streamlit.io).
+3. **Connect Repository:** Click "New app" and connect your GitHub repository.
 4. **Configure Deployment:**
-   - Repository: `Matthew-pros/CZ-RealEstate-agent`
-   - Branch: `main`
-   - Main file path: `streamlit_app.py`
-5. **Deploy:** Click "Deploy" and wait for the build to complete
+   - **Repository:** Choose your repository.
+   - **Branch:** Choose the branch you want to deploy (e.g., `main`).
+   - **Main file path:** `streamlit_app.py`.
+5. **Deploy:** Click "Deploy" and wait for the build process to complete. Streamlit Cloud will automatically install the necessary dependencies from `requirements.txt` and `packages.txt`, run the `streamlit_app.py` script, which in turn builds the React application and serves it.
 
 ### Alternative Deployment Options
 
