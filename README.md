@@ -169,6 +169,10 @@ This project is configured for easy deployment to Streamlit Cloud. The `streamli
    - **Main file path:** `streamlit_app.py`.
 5. **Deploy:** Click "Deploy" and wait for the build process to complete. Streamlit Cloud will automatically install the necessary dependencies from `requirements.txt` and `packages.txt`, run the `streamlit_app.py` script, which in turn builds the React application and serves it.
 
+#### Customization
+
+The application includes a default theme defined in `.streamlit/config.toml`. You can customize the look and feel of the Streamlit wrapper by modifying this file. For more information on theming, refer to the [Streamlit documentation](https://docs.streamlit.io/library/advanced-features/theming).
+
 ### Alternative Deployment Options
 
 #### Vercel
